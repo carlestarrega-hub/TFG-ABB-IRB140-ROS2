@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+<robot name="abb_irb140">
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/visual/base_link.stl"/>
+      </geometry>
+      <material name="abb_orange">
+        <color rgba="1 0.43 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/collision/base_link.stl"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="0 1 1 1"/>
+      </material>
+    </collision>
+  </link>
+  <link name="link_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/visual/link_1.stl"/>
+      </geometry>
+      <material name="abb_orange"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/collision/link_1.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </collision>
+  </link>
+  <link name="link_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.07 0 -0.352"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/visual/link_2.stl"/>
+      </geometry>
+      <material name="abb_orange"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.07 0 -0.352"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/collision/link_2.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </collision>
+  </link>
+  <link name="link_3">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/visual/link_3.stl"/>
+      </geometry>
+      <material name="abb_orange"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/collision/link_3.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </collision>
+  </link>
+  <link name="link_4">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/visual/link_4.stl"/>
+      </geometry>
+      <material name="abb_orange"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/collision/link_4.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </collision>
+  </link>
+  <link name="link_5">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/visual/link_5.stl"/>
+      </geometry>
+      <material name="abb_orange"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/collision/link_5.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </collision>
+  </link>
+  <link name="link_6">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/visual/link_6.stl"/>
+      </geometry>
+      <material name="abb_orange"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.07 0.065 -0.712"/>
+      <geometry>
+        <mesh filename="package://abb_irb140_support/meshes/irb140/collision/link_6.stl"/>
+      </geometry>
+      <material name="yellow"/>
+    </collision>
+  </link>
+  <link name="tool0"/>
+  <joint name="joint_1" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-3.14159" upper="3.14159" velocity="2.618"/>
+  </joint>
+  <joint name="joint_2" type="revolute">
+    <origin rpy="0 0 0" xyz="0.070 0 0.352"/>
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-1.5708" upper="1.91986" velocity="2.618"/>
+  </joint>
+  <joint name="joint_3" type="revolute">
+    <origin rpy="0 0 0" xyz="0 -0.065 0.360"/>
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-4.01426" upper="0.872665" velocity="2.618"/>
+  </joint>
+  <joint name="joint_4" type="revolute">
+    <origin rpy="0 0 0" xyz="0.239 0.065 0"/>
+    <parent link="link_3"/>
+    <child link="link_4"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="0" lower="-3.49066" upper="3.49066" velocity="6.2832"/>
+  </joint>
+  <joint name="joint_5" type="revolute">
+    <origin rpy="0 0 0" xyz="0.141 0 0"/>
+    <parent link="link_4"/>
+    <child link="link_5"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-2.00713" upper="2.00713" velocity="6.2832"/>
+  </joint>
+  <joint name="joint_6" type="revolute">
+    <origin rpy="0 0 0" xyz="0.065 0 0"/>
+    <parent link="link_5"/>
+    <child link="link_6"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="0" lower="-6.98132" upper="6.98132" velocity="7.854"/>
+  </joint>
+  <joint name="joint_6-tool0" type="fixed">
+    <parent link="link_6"/>
+    <child link="tool0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <ros2_control name="IgnitionSystem" type="system">
+    <hardware>
+      <plugin>mock_components/GenericSystem</plugin>
+    </hardware>
+    <joint name="joint_1">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_2">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_3">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_4">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_5">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="joint_6">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+</robot>
