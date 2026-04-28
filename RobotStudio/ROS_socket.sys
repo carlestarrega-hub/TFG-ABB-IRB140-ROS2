@@ -1,0 +1,59 @@
+MODULE ROS_socket(SYSMODULE)
+    ! Puerto sincronizado con script de Python
+    CONST num ROS_PORT := 12000;
+
+    PROC ROS_init_sk(VAR socketdev sk, num port)
+        SocketCreate sk;
+        
+        ! Escuchar en TODAS las interfaces de red 
+        SocketBind sk, "0.0.0.0", port;
+        SocketListen sk;
+        
+        TPWrite "Servidor Ejercicios listo. Puerto: 11000";
+    ERROR
+        RAISE;
+    ENDPROC
+
+    PROC ROS_wait_cli(VAR socketdev sk, VAR socketdev cli)
+        SocketAccept sk, cli \Time:=WAIT_MAX;
+        TPWrite "¡Conectado! Recibiendo trayectoria de 16 puntos...";
+    ERROR
+        RAISE;
+    ENDPROC
+
+    PROC R_rec_msg_tr(VAR socketdev cli, VAR R_msg_joint msg)
+        VAR rawbytes buf;
+        VAR num m_len;
+        
+        ClearRawBytes buf;
+        ! Recibimos el encabezado de longitud
+        SocketReceive cli, \RawData:=buf, \ReadNoOfBytes:=4;
+        UnpackRawBytes buf, 1, m_len, \IntX:=UDINT;
+        
+        ClearRawBytes buf;
+        ! Recibimos el paquete completo (tus 68 bytes del struct.pack)
+        SocketReceive cli, \RawData:=buf, \ReadNoOfBytes:=m_len;
+        
+        ! Desempaquetado según estructura <I4i13f
+        UnpackRawBytes buf, 13, msg.seq_id, \IntX:=DINT;
+        UnpackRawBytes buf, 17, msg.joints.rax_1, \Float4;
+        UnpackRawBytes buf, 21, msg.joints.rax_2, \Float4;
+        UnpackRawBytes buf, 25, msg.joints.rax_3, \Float4;
+        UnpackRawBytes buf, 29, msg.joints.rax_4, \Float4;
+        UnpackRawBytes buf, 33, msg.joints.rax_5, \Float4;
+        UnpackRawBytes buf, 37, msg.joints.rax_6, \Float4;
+        
+        ! Ejes externos 
+        UnpackRawBytes buf, 41, msg.e_axes.eax_a, \Float4;
+        UnpackRawBytes buf, 45, msg.e_axes.eax_b, \Float4;
+        UnpackRawBytes buf, 49, msg.e_axes.eax_c, \Float4;
+        UnpackRawBytes buf, 53, msg.e_axes.eax_d, \Float4;
+        UnpackRawBytes buf, 57, msg.e_axes.eax_e, \Float4;
+        UnpackRawBytes buf, 61, msg.e_axes.eax_f, \Float4;
+        
+        ! Duracion del movimiento
+        UnpackRawBytes buf, 65, msg.duration, \Float4;
+    ERROR
+        RAISE;
+    ENDPROC
+ENDMODULE

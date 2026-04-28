@@ -1,0 +1,26 @@
+MODULE ROS_messages(SYSMODULE)
+    RECORD R_msg_header
+        num m_type;
+        num c_type;
+        num r_code;
+    ENDRECORD
+    RECORD R_msg
+        R_msg_header header;
+        rawbytes data;
+    ENDRECORD
+    RECORD R_msg_joint
+        num seq_id;
+        robjoint joints;
+        extjoint e_axes;
+        num duration;
+    ENDRECORD
+    RECORD R_msg_data
+        R_msg_header header;
+        robjoint joints;
+        extjoint e_axes;
+    ENDRECORD
+    CONST num R_MT_JOINT := 10;
+    CONST num R_CT_TOPIC := 1;
+    CONST num R_TR_START := 1;
+    CONST num R_TR_END := 2;
+ENDMODULE

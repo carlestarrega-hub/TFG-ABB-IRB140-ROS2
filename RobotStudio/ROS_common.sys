@@ -1,0 +1,26 @@
+MODULE ROS_common(SYSMODULE)
+    RECORD R_traj_pt
+        robjoint j_pos;
+        extjoint e_pos;
+        num dur;
+    ENDRECORD
+
+    CONST num MAX_TRJ := 10;
+    ! Cambiamos TRUE por FALSE para que el candado empiece abierto
+    PERS bool R_tr_lock := FALSE;
+    PERS num R_tr_size := 1;
+    PERS bool R_new_tr := FALSE;
+    
+    PERS R_traj_pt R_tr{10} := [
+        [[-0.170848,-0.199594,-0.425114,0.22938,-0.520349,0.0162737],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09],0.1],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0],
+        [[0,0,0,0,0,0],[0,0,0,0,0,0],0]
+    ];
+ENDMODULE
